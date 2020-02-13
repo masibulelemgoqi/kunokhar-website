@@ -110,6 +110,7 @@ $('#less-staff').click(function(){
 
     $(minimized_elements).click(function(event){
         event.preventDefault();
+        event.stopPropagation()
         $(this).parent().hide().prev().show().prev().show();    
     });
 

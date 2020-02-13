@@ -749,8 +749,11 @@ left: 10px;
                </div>
                 <h3 class="sub-head">IDEA REGISTRATION</h3>
                 <div class="w3-row">
-                    <p class="w3-text text-center ">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    <p class="w3-text text-center " style="font-weight: bold;margin:2%;">
+                    Initially Vodacom denied Makate's claims that he had invented
+                     Please Call Me and that the company had promised to compensate
+                      him. In particular, the problem here signifies the challenges 
+                      are found on oral contracts...
                     </p>
                 </div>
 
@@ -767,13 +770,52 @@ left: 10px;
                         <div>
                         <div class="w3-container">
                           <div class="w3-row w3-padding-small">
-                            <p class="">
-                               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            <p class="" >
+                               Initially Vodacom denied Makate's claims that he had invented Please Call Me 
+                               and that the company had promised to compensate him. In particular,
+                                the problem here signifies the challenges are found on oral contracts. 
+                                Kunokhar CTP is here to solve this dilemma because not all South Africans 
+                                with brilliant ideas but with no financial strength might be as lucky as
+                                Makete to finance all the proceedings of fighting for his idea. The challenge above all here is proof of ownership.    
                             </p>
                           </div>
-                          <div class="w3-row">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                          <div class="w3-row w3-padding-small">
+                            <p class="" >
+                               This was an idea and could not be registered with CIPC because CIPC does 
+                               not register ideas but CIPC registers other things other than an idea. 
+                               Should CIPC was able to register an idea, this battle would be over by now.
+                                The time line above is taken from the local sources to illustrate how 
+                                difficult and disadvantaging it is to have someone claiming your idea.
+                                 At Kunokhar CTP we close this gap by registering ideas for the South 
+                                 Africans and we are the only company that is able to do so. 
+                            </p>
                           </div>
+
+                          <div class="w3-row w3-padding-small">
+                            <p class="" >
+                              We believe that this product will put a stop in similar
+                               problems as the one mentioned above, because it will 
+                               be a matter of proving that the idea has been registered at 
+                               some date, registered from an external source who is able to 
+                               verify that registration belongs to someone (thereby proving ownership),
+                                anyone who claims it must prove his ownership against it.
+                               Kunokhar CTP undertakes to solve this problem.  Our certificate, 
+                               like any other certificate is a proof that something was done,
+                               the idea was registered with us by a certain person mentioned on
+                                the certificate itself. We merely prove registration and ownership.
+                                 Although we have sufficient expertise in our firm, we do our best 
+                                 with the information we obtain from the registrant to estimate the
+                                  value of the idea so that there are few questions of how much that 
+                                  needs to be paid to the complainant once a similar dispute has erupted.    
+                            </p>
+                          </div>
+                          <div class="w3-row w3-padding-small">
+                            <p class="" >
+                            <a href="public/docs/Please call mee-1_R_T.pdf" target="_blank">See the full story here </a>
+                            </p>
+                          </div>
+
+         
                         </div>
                        </div>
                    </div>
@@ -864,8 +906,8 @@ left: 10px;
 
                             </p>
                           </div>
-                          <div class="w3-row">
-                            <a href="public/docs/14606.pdf" target="_blank"> <i class="fa fa-pdf text-danger"></i> </a>
+                          <div class="w3-row w3-padding-small" style="padding: 5% 0;">
+                            <a href="public/docs/14606.pdf" target="_blank">See more the document</a>
                           </div>
                        </div>
                    </div>

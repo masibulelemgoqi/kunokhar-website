@@ -2,6 +2,7 @@
 require_once('class/user.php');
 require_once('class/admin.php');
 
+
 if( isset($_POST['action']))
 {
 
@@ -51,19 +52,6 @@ if( isset($_POST['action']))
 			}
 			break;
 //add operations
-		case 'add_article':
-				$cat_id = $_POST['cat_id'];
-				$heading = $_POST['heading'];
-				$content = $_POST['content'];
-
-				$admin = new Admin();
-
-				if(!$admin->addArticle($cat_id, $heading, $content))
-				{
-					print("Couldn't add an Article");
-				}else
-					print("Article added successfully");
-			break;
 
 		case 'add_category':
 				$category = $_POST['category'];
@@ -244,7 +232,7 @@ if(isset($_POST['heading']) && isset($_POST['content']) && isset($_FILES['image_
 	$heading = $_POST['heading'];
 	$content = $_POST['content'];
 	$a = new Admin();
-	echo $_FILES['image_file_announcement']['tmp_name'] ."  ".$_FILES['image_file_announcement']['size'];
+
 	if($content != "" && $heading != "")
 	{
 		if($filename != "")
@@ -361,6 +349,67 @@ if(isset($_POST['announcement_heading_edit']) && isset($_POST['announcement_cont
 
 
 	print($status);
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//================================ADD ARTICLE===========================================
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+if(isset($_POST['category']) && isset($_POST['heading']) && isset($_POST['content']))
+{
+	$cat_id = $_POST['category'];
+	$heading = $_POST['heading'];
+	$content = $_POST['content'];
+	$filename = $_FILES['document-file']['name'];
+	$status = "";
+	
+	$admin = new Admin();
+
+	if($cat_id != null && $heading != null && $content != null)
+	{
+		if($filename != "")
+		{
+
+		  $destination = '../public/uploads/'.$filename;
+	      // get the file extension
+	      $extension = pathinfo($filename, PATHINFO_EXTENSION);
+	      // the physical file on a temporary uploads directory on the server
+	      $file = $_FILES['document-file']['tmp_name'];
+	      $size = $_FILES['document-file']['size'];
+	      if (!in_array($extension, ['pdf', 'PDF']))
+	      {
+	         $status = "<div class='alert alert-danger'>Your file extension must be .pdf !!</div>";
+	      } elseif ($size > 1000000000) { // file shouldn't be larger than 1000Megabyte
+	        $status = "<div class='alert alert-danger'>File too large!!</div>";
+	      } else
+	      {
+
+	         // move the uploaded (temporary) file to the specified destination
+	         if (move_uploaded_file($file, $destination) && $admin->addArticle($cat_id, $heading, $content, $filename))
+	         {
+	           $status = "Article added successfully";
+	         }else
+	         {
+	            $status = "Couldn't add an Article";
+	         }
+	      }
+		}
+		else
+		{
+			$filename = null;
+			if($admin->addArticle($cat_id, $heading, $content, $filename))
+			{
+	           $status = "Article added successfully";
+			}else
+			{
+	           $status = "Couldn't add an Article";
+			}
+
+		}
+	}
+
+	print($status);
+
 }
 
 

@@ -42,39 +42,51 @@
             $('#login_status').html("All fields are required").addClass('w3-text-red');
         }
 
-    });
+	});
 
-	$('#add_article').click(function(e)
+	var doc = null;
+	
+	$('#document-file').on('change', function(e)
+	{
+		doc = e.target.files[0];
+		
+	});
+
+	$('#article-add-form').submit(function(e)
 	{
 		e.preventDefault();
-		var cat_id = $('#cat_id').val();
-		var heading = $('#heading').val();
-		var content = CKEDITOR.instances['content'].getData();
-
-		if(cat_id != "" && heading != "" && content != "")
+		var form = $('#article-add-form')[0]; // You need to use standard javascript object here
+		var formData = new FormData(form);
+		$.ajax(
 		{
-			$.ajax(
+			method: 'POST',
+			url: '../models/controller.php',
+			data: formData,
+			contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+			processData: false, // NEEDED, DON'T OMIT THIS
+			success: function(data)
 			{
-				method: 'POST',
-				url: '../models/controller.php',
-				data: {cat_id: cat_id, heading: heading, content: content, action: 'add_article'},
-				success: function(data)
-				{
-					$('#add_status').removeClass('alert alert-danger');
-					$('#add_status').html(data).addClass('alert alert-success');
-					setInterval(function(){ location.href = '../pages/view_categories.php'; }, 2000);
-				},
-				error: function(data)
-				{
-					$('#add_status').html(data);
-				}
-			});
-		}else
-		{
-			$('#add_status').removeClass('alert alert-success');
-			$('#add_status').html("All field are required").addClass('alert alert-danger');
-		}
+				console.log(data);
+				
+				$('#add_status').removeClass('alert alert-danger');
+				$('#add_status').html(data).addClass('alert alert-success');
+				setInterval(function(){ location.href = '../pages/admin.php'; }, 2000);
+			},
+			error: function(data)
+			{
+				console.log(data);
+				
+				//$('#add_status').html(data);
+			}
+		});
+
 	});
+
+	function validate_article()
+	{
+
+	}
+
 
 	$('#add_cate').click(function(e)
 	{
@@ -222,38 +234,38 @@
 		}
 	});
 
-	$('#edit_article').click(function(e)
-	{
-		e.preventDefault();
-		var cat_id = $('#category').val();
-		var article_id = $('#article_id').val();
-		var heading = $('#heading').val();
-		var content = CKEDITOR.instances['content'].getData();
+	// $('#edit_article').click(function(e)
+	// {
+	// 	e.preventDefault();
+	// 	var cat_id = $('#category').val();
+	// 	var article_id = $('#article_id').val();
+	// 	var heading = $('#heading').val();
+	// 	var content = CKEDITOR.instances['content'].getData();
 
-		if(cat_id != "" && article_id != "" && heading != "" && content != "")
-		{
-			$.ajax(
-			{
-				method: 'POST',
-				url: '../models/controller.php',
-				data: {cat_id: cat_id, article_id: article_id, heading: heading, content: content, action: 'edit_article'},
-				success: function(data)
-				{
-					$('#add_status').removeClass('alert alert-danger');
-					$('#add_status').html(data).addClass('alert alert-success');
-					setInterval(function(){ location.href = '../pages/view_articles.php'; }, 2000);
-				},
-				error: function(data)
-				{
-					$('#add_status').html(data);
-				}
-			});
-		}else
-		{
-			$('#add_status').removeClass('alert alert-success');
-			$('#add_status').html("All field are required").addClass('alert alert-danger');
-		}
-	});
+	// 	if(cat_id != "" && article_id != "" && heading != "" && content != "")
+	// 	{
+	// 		$.ajax(
+	// 		{
+	// 			method: 'POST',
+	// 			url: '../models/controller.php',
+	// 			data: {cat_id: cat_id, article_id: article_id, heading: heading, content: content, action: 'edit_article'},
+	// 			success: function(data)
+	// 			{
+	// 				$('#add_status').removeClass('alert alert-danger');
+	// 				$('#add_status').html(data).addClass('alert alert-success');
+	// 				setInterval(function(){ location.href = '../pages/view_articles.php'; }, 2000);
+	// 			},
+	// 			error: function(data)
+	// 			{
+	// 				$('#add_status').html(data);
+	// 			}
+	// 		});
+	// 	}else
+	// 	{
+	// 		$('#add_status').removeClass('alert alert-success');
+	// 		$('#add_status').html("All field are required").addClass('alert alert-danger');
+	// 	}
+	// });
 
 $('#edit_job').click(function(e)
 	{

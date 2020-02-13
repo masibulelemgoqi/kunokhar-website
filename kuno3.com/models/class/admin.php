@@ -76,17 +76,18 @@ class Admin{
             }
     }
 
-    public function addArticle($category, $heading, $content)
+    public function addArticle($category, $heading, $content, $filename)
     {
         $rdate = date('Y-m-d H:i:s');
-        $sql = 'INSERT INTO article (CAT_ID, HEADING, CONTENT, DATE) VALUES (
-                :category, :heading, :content,:rdate)';
+        $sql = 'INSERT INTO article (`CAT_ID`, `HEADING`, `CONTENT`, `ARTICLE_FILE`, `DATE`) VALUES (
+                :category, :heading, :content, :filename ,:rdate)';
         try {
 
                     $stmt = $this->con->prepare($sql);
                     $stmt->bindParam(':category', $category);
                     $stmt->bindParam(':heading', $heading);
                     $stmt->bindParam(':content', $content);
+                    $stmt->bindParam(':filename', $filename);
                     $stmt->bindParam(':rdate', $rdate);
 
                     if($stmt->execute()){
@@ -383,8 +384,9 @@ class Admin{
 
     public function getJobs()
     {
-
-        $result = $this->con->query('SELECT * FROM job ORDER BY EXPIRY_DATE DESC');
+        $d = date('Y-m-d');
+        echo($d);
+        $result = $this->con->query('SELECT * FROM `job` WHERE DATEDIFF('.date('Y-m-d').', `EXPIRY_DATE`) < 0 ORDER BY EXPIRY_DATE DESC');
         $jobs = array();
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $jobs[] = $row;
