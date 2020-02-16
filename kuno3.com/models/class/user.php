@@ -128,7 +128,10 @@ class User{
     public function getJobs()
     {
 
-        $result = $this->con->query('SELECT * FROM job');
+      $d = date('d');
+      $m = date('m');
+      $y = date('Y');
+      $result = $this->con->query('SELECT * FROM `job` WHERE '.$y. '= YEAR(`EXPIRY_DATE`) AND '.$m.' = MONTH(`EXPIRY_DATE`) AND '.$d.'< DAY(`EXPIRY_DATE`) ORDER BY `EXPIRY_DATE` DESC');
         $jobs = array();
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $jobs[] = $row;

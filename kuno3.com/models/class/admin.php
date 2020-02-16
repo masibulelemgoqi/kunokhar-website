@@ -384,9 +384,10 @@ class Admin{
 
     public function getJobs()
     {
-        $d = date('Y-m-d');
-        echo($d);
-        $result = $this->con->query('SELECT * FROM `job` WHERE DATEDIFF('.date('Y-m-d').', `EXPIRY_DATE`) < 0 ORDER BY EXPIRY_DATE DESC');
+        $d = date('d');
+        $m = date('m');
+        $y = date('Y');
+        $result = $this->con->query('SELECT * FROM `job` WHERE '.$y. '= YEAR(`EXPIRY_DATE`) AND '.$m.' = MONTH(`EXPIRY_DATE`) AND '.$d.'< DAY(`EXPIRY_DATE`) ORDER BY `EXPIRY_DATE` DESC');
         $jobs = array();
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $jobs[] = $row;

@@ -6,7 +6,39 @@ if (!isset($_SESSION['id'])) {
 include '../partials/header.php'
 
 ?>
+      <!-- start add category -->
+      <div class="row ml-5 mt-5">
 
+      <a href="" class="" data-toggle="modal" data-target="#add_category" title="add title">
+         <img src="../public/img/folder_add_plus.png" width="20" height="20">
+      </a>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="add_category" tabindex="-1" role="dialog" aria-labelledby="add_category_modal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="add_category_modal">Add Category</h5>
+      <button type="button" class="close btn-danger" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      <div class="modal-body">
+         <form method="POST" action="">
+            <div id="add_status"></div>
+            <input type="text" name="category" id="category" placeholder="Enter the name of the title" class="form-control">
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" name="add_category" id="add_cate">Add</button>
+            </div>
+         </form>
+      </div>
+      </div>
+      </div>
+      </div>
+
+      <!-- end add category -->
    <div class="W3-row mt-5 ml-5">
       <div class="w3-col" style="width: 100%; padding: .7em;">
          <?php

@@ -255,7 +255,7 @@ if(isset($_POST['heading']) && isset($_POST['content']) && isset($_FILES['image_
 	         // move the uploaded (temporary) file to the specified destination
 	         if (move_uploaded_file($file, $destination) && $a->add_announcement($heading, $content, $filename, $extension))
 	         {
-	           $status = "<div class='alert alert-success'>announcement added!!</div>";
+	           $status = "1";
 	         }else
 	         {
 	            $status = "<div class='alert alert-danger'>Failed to add announcement</div>";
@@ -267,7 +267,7 @@ if(isset($_POST['heading']) && isset($_POST['content']) && isset($_FILES['image_
 			$filename = "NULL";
 			if($a->add_announcement($heading, $content, $filename, $extension))
 			{
-	           $status = "<div class='alert alert-success'>announcement added!!</div>";
+	           $status = "1";
 			}else
 			{
 	           $status = "<div class='alert alert-danger'>Failed to add announcement!!</div>";
@@ -321,7 +321,7 @@ if(isset($_POST['announcement_heading_edit']) && isset($_POST['announcement_cont
 	         // move the uploaded (temporary) file to the specified destination
 	         if (move_uploaded_file($file, $destination) && $a->edit_announcement($id, $heading, $content, $filename, $extension))
 	         {
-	           $status = "<div class='alert alert-success'>announcement edited!!</div>";
+	           $status = "1";
 	         }else
 	         {
 	            $status = "<div class='alert alert-danger'>Failed to aedit announcement</div>";
@@ -334,7 +334,7 @@ if(isset($_POST['announcement_heading_edit']) && isset($_POST['announcement_cont
 			$extension = null;
 			if($a->edit_announcement($id, $heading, $content, $filename, $extension))
 			{
-	           $status = "<div class='alert alert-success'>announcement edited!!</div>";
+	           $status = "1";
 			}else
 			{
 	           $status = "<div class='alert alert-danger'>Failed to edit announcement!!</div>";

@@ -64,7 +64,7 @@ if(sizeof($category->getCategories()) > 0)
 
 	<div class="text-right mr-5 mb-2">
 		<a href="./edit_category.php?e_id=<?php print($category['CAT_ID'])?>" class="btn btn-primary" title="edit category">Edit</a>
-   	<a href="../models/controller.php?d_id=<?php print($category['CAT_ID'])?>" class="btn btn-danger" title="delete category">delete</a>
+   	<button onclick="delete_category(<?php print($category['CAT_ID'])?>)" class="btn btn-danger" title="delete category">delete</button>
 	</div>
 <hr>
 </div>

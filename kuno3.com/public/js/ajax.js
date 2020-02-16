@@ -354,55 +354,57 @@ $('#edit_user').click(function(e)
 	$('#announcements_add_container').submit('form', function(e)
 	{
 		e.preventDefault();
-		var form = document.querySelector('.announcement_form');
-		var request = new XMLHttpRequest();
+		var form = $('#announcement_form')[0]; // You need to use standard javascript object here
+		var formData = new FormData(form);
 
 		var formData = new FormData(form);
-		request.open('post', '../models/controller.php', true);
-			//Send the proper header information along with the request
-			//request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-			request.onreadystatechange = function()
-			{//Call a function when the state changes.
-			    if(request.readyState == 4 && request.status == 200)
-					{
-			        $('.announcement_add_status').html(request.responseText);
-							setInterval(function(){ location.href = '../pages/announcements.php'; }, 2000);
-			    }else
-					{
-			    		$('.announcement_add_status').html(request.responseText);
-			    }
+		$.ajax(
+		{
+			url: "../models/controller.php",
+			method: "POST",
+			data: formData,
+			success: function(data)
+			{
+				if(data == "1")
+				{
+			        $('.announcement_add_status').html("<div class='alert alert-success'>announcement added!!</div>");
+					setInterval(function(){ window.location.href = '../pages/announcements.php'; }, 2000);
+				}else
+				{
+					$('.announcement_add_status').html(data);
+				}
 			}
-			request.send(formData);
 
-	}, false);
+		});
+
+	});
 
 	//edit announcement
 
 		$('#announcements_edit_container').submit('form', function(e)
 		{
 			e.preventDefault();
-			var form = document.querySelector('.announcement_edit_form');
-			var request = new XMLHttpRequest();
-
+			var form = $('.announcement_edit_form')[0];
 			var formData = new FormData(form);
-			request.open('post', '../models/controller.php', true);
-				//Send the proper header information along with the request
-				//request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-				request.onreadystatechange = function()
-				{//Call a function when the state changes.
-				    if(request.readyState == 4 && request.status == 200)
-						{
-				        $('.announcement_edit_status').html(request.responseText);
-								setInterval(function(){ location.href = '../pages/announcements.php'; }, 2000);
-
-				    }else
-						{
-				    		$('.announcement_edit_status').html(request.responseText);
-				    }
+			$.ajax(
+			{
+				url: '../models/controller.php',
+				method: 'POST',
+				data: formData,
+				success: function(data)
+				{
+					if(data == "1")
+					{
+						$('.announcement_edit_status').html("<div class='alert alert-success'>announcement edited!!</div>");
+						setInterval(function(){ location.href = '../pages/announcements.php'; }, 2000)	
+					}else
+					{
+						$('.announcement_edit_status').html(data);
+					}
 				}
-				request.send(formData);
+			});
 
-		}, false);
+		});
 
 
 
